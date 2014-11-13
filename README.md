@@ -1,7 +1,9 @@
 #SlimStatic
 
-Slim PHP static proxy library.
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnstevenson/slim-static/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnstevenson/slim-static/?branch=master)
+[![Build Status](https://travis-ci.org/johnstevenson/slim-static.svg?branch=master)](https://travis-ci.org/johnstevenson/slim-static)
 
+Slim PHP static proxy library.
 ## Contents
 * [About](#About)
 * [Usage](#Usage)
@@ -183,10 +185,10 @@ Sugar for the following Slim instance route-mapping methods:
 ```php
 Route::get('/users/:id', function ($id) {...});
 Route::post('/users',  function () {...});
-Route:urlFor('admin');
+Route::urlFor('admin');
 ```
 
-Note that because these call the Slim instance you can also invoke them with `App::get`,
+Note that because these methods call the Slim instance you can also invoke them with `App::get`,
 `App::post` etc.
 
 <a name="View"></a>
@@ -245,6 +247,8 @@ Statical::addProxyService($alias, $proxy, Container::getInstance(), $id);
 # Now we can call PaymentService methods via the static alias Payment
 Payment::process();
 ```
+
+Note that for namespaced code, the namespace must be included in the `$proxy` param.
 
 
 <a name="License"></a>
