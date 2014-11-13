@@ -4,9 +4,6 @@ filter:
         - 'tests/*'
 
 tools:
-    external_code_coverage:
-        enabled: true
-        timeout: 900
     php_sim:
         enabled: true
     php_pdepend:
