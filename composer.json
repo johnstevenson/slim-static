@@ -16,6 +16,7 @@
         "slim/slim": "~2.3",
         "statical/statical": "~1.0"
     },
+
     "autoload": {
         "psr-4": {"Statical\\SlimStatic\\": "src/"}
     }

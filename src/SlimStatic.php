@@ -26,15 +26,7 @@ class SlimStatic
         static::addInstances($aliases, $manager, $slim->container);
 
         // Add services that are resolved out of the Slim container
-        $services = array(
-            'Input' => 'request',
-            'Log' => 'log',
-            'Request' => 'request',
-            'Response' => 'response',
-            'View'     => 'view',
-        );
-
-        static::addServices($services, $manager, array($slim, '__get'));
+        static::addServices($manager, $slim);
 
         return $manager;
     }
@@ -43,7 +35,7 @@ class SlimStatic
     * Adds instances to the Statical Manager
     *
     * @param array $aliases
-    * @param mixed $manager
+    * @param \Statical\Manager $manager
     * @param object $instance
     */
     static protected function addInstances($aliases, $manager, $instance)
@@ -57,12 +49,21 @@ class SlimStatic
     /**
     * Adds services to the Statical Manager
     *
-    * @param array $services
-    * @param mixed $manager
-    * @param object $container
+    * @param \Statical\Manager $manager
+    * @param \Slim\Slim $slim
     */
-    static protected function addServices($services, $manager, $container)
+    static protected function addServices($manager, $slim)
     {
+        $services = array(
+            'Input' => 'request',
+            'Log' => 'log',
+            'Request' => 'request',
+            'Response' => 'response',
+            'View'     => 'view',
+        );
+
+        $container = array($slim, '__get');
+
         foreach ($services as $alias => $id) {
             $proxy = __NAMESPACE__.'\\'.$alias;
             $manager->addProxyService($alias, $proxy, $container, $id);
