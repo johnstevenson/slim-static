@@ -34,7 +34,7 @@ class SlimStatic
     /**
     * Adds instances to the Statical Manager
     *
-    * @param array $aliases
+    * @param string[] $aliases
     * @param \Statical\Manager $manager
     * @param object $instance
     */
