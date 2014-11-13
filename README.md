@@ -182,12 +182,12 @@ Proxy to the Slim\Router instance with the following additional methods:
 on the Slim instance
 
 ```php
-Route::get('/users/:id', function ($id) ... );
-Route::post('/users',  function () ... );
+Route::get('/users/:id', function ($id) {});
+Route::post('/users',  function () {});
 
 # Because this calls the Slim instance you could also use
-App::get('/users/:id', function ($id) ... );
-App::post('/users',  function () ... );
+App::get('/users/:id', function ($id) { ... });
+App::post('/users',  function () { ... });
 
 ```
 
