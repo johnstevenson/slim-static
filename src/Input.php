@@ -1,7 +1,7 @@
 <?php
 namespace Statical\SlimStatic;
 
-class Input extends SlimBase
+class Input extends \Statical\BaseProxy
 {
 	public static function file($name)
 	{

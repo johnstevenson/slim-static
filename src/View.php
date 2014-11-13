@@ -1,6 +1,6 @@
 <?php
 namespace Statical\SlimStatic;
 
-class View extends SlimBase
+class View extends \Statical\BaseProxy
 {
 }

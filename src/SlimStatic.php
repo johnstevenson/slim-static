@@ -5,8 +5,8 @@ class SlimStatic
 {
     public static function boot(\Slim\Slim $slim)
     {
-        // set Slim application for proxies
-        SlimBase::$slim = $slim;
+        // set Slim application for syntactic-sugar proxies
+        SlimSugar::$slim = $slim;
 
         // create a new Manager
         $manager = new \Statical\Manager();
@@ -14,7 +14,7 @@ class SlimStatic
         $base = 'Statical\\SlimStatic\\';
 
         // Add proxies that use the Slim instance
-        $instances = array('App', 'Config');
+        $instances = array('App', 'Config', 'Route');
 
         foreach ($instances as $alias) {
             $proxy = $base.$alias;
@@ -34,7 +34,6 @@ class SlimStatic
             'Log' => 'log',
             'Request' => 'request',
             'Response' => 'response',
-            'Route'    => 'router',
             'View'     => 'view',
         );
 

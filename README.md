@@ -91,7 +91,7 @@ Statical Alias          | Proxy
 [Log](#Log)             | to Slim\Log instance
 [Request](#Request)     | to Slim\Http\Request instance
 [Response](#Response)   | to Slim\Http\Response instance
-[Route](#Route)         | to Slim\Router instance
+[Route](#Route)         | calling Slim route-matching methods
 [View](#View)           | to Slim\View instance
 
 <a name="App"></a>
@@ -106,7 +106,7 @@ App::halt();
 
 <a name="Config"></a>
 #### Config
-Proxy to the Slim config method, using the following methods:
+Sugar for Slim config, using the following methods:
 
 - `get($key)` - returns value of `$app->config($key)`
 - `set($key, $value = null)` - calls `$app->config($key, $value)`
@@ -131,8 +131,8 @@ Container::set('foo', 'bar');
 # $bar = $app->foo
 $bar = Container::get('foo');
 
-Container::singleton('log', function () ... );
-$rawClosure = Container::protect(function () ... );
+Container::singleton('log', function () {...});
+$rawClosure = Container::protect(function () {...});
 ```
 
 <a name="Input"></a>
@@ -176,20 +176,18 @@ Response::headers->set('Content-Type', 'application/json');
 
 <a name="Route"></a>
 #### Route
-Proxy to the Slim\Router instance with the following additional methods:
+Sugar for the following Slim instance route-mapping methods:
 
-- `map`, `get`, `post`, `put`, `patch`, `delete`, `options`, `group`, `any` - calls the methods
-on the Slim instance
+- `map`, `get`, `post`, `put`, `patch`, `delete`, `options`, `group`, `any`, `urlFor`
 
 ```php
-Route::get('/users/:id', function ($id) {});
-Route::post('/users',  function () {});
-
-# Because this calls the Slim instance you could also use
-App::get('/users/:id', function ($id) { ... });
-App::post('/users',  function () { ... });
-
+Route::get('/users/:id', function ($id) {...});
+Route::post('/users',  function () {...});
+Route:urlFor('admin');
 ```
+
+Note that because these call the Slim instance you can also invoke them with `App::get`,
+`App::post` etc.
 
 <a name="View"></a>
 #### View

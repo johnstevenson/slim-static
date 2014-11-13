@@ -1,6 +1,6 @@
 <?php
 namespace Statical\SlimStatic;
 
-class Log extends SlimBase
+class Log extends \Statical\BaseProxy
 {
 }

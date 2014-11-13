@@ -31,7 +31,7 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-    * Test Config fails when caled with an App method
+    * Test Config fails when called with an App method
     *
     * @expectedException BadMethodCallException
     *
@@ -70,7 +70,21 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 
     public function testRoute()
     {
-        $this->assertSame(Route::getInstance(), $this->app->router);
+        Route::get('/home', function () {})->name('named');
+        $expected = Request::getRootUri().'/home';
+
+        $this->assertEquals($expected, Route::urlFor('named'));
+    }
+
+    /**
+    * Test Route fails when called with an App method
+    *
+    * @expectedException BadMethodCallException
+    *
+    */
+    public function testRouteFailsBadMethod()
+    {
+        $appName = Route::getName();
     }
 
     public function testView()

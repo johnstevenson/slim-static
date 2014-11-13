@@ -1,7 +1,7 @@
 <?php
 namespace Statical\SlimStatic;
 
-class Config extends SlimBase
+class Config extends SlimSugar
 {
 	public static function get($key)
 	{
@@ -12,10 +12,4 @@ class Config extends SlimBase
 	{
 		return static::$slim->config($key, $value);
 	}
-
-    public static function __callStatic($name, $args)
-    {
-        // Enforce above methods only
-        throw new \BadMethodCallException($name.' method not available');
-    }
 }
