@@ -1,3 +1,4 @@
 vendor/
 *.lock
 phpunit.xml
+.idea/

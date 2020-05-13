@@ -1,4 +1,4 @@
-#SlimStatic
+# SlimStatic
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnstevenson/slim-static/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnstevenson/slim-static/?branch=master)
 [![Build Status](https://travis-ci.org/johnstevenson/slim-static.svg?branch=master)](https://travis-ci.org/johnstevenson/slim-static)
@@ -57,7 +57,7 @@ composer require statical/slim-static
 Create your Slim app and boot SlimStatic:
 
 ```php
-use Slim\Slim;
+use Slim\App;
 use Statical\SlimStatic\SlimStatic;
 
 $app = new Slim();

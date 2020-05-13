@@ -6,10 +6,10 @@ class SlimStatic
     /**
     * Boots up SlimStatic by registering its proxies with Statical.
     *
-    * @param \Slim\Slim $slim
+    * @param \Slim\App $slim
     * @return \Statical\Manager
     */
-    public static function boot(\Slim\Slim $slim)
+    public static function boot(\Slim\App $slim)
     {
         // set Slim application for syntactic-sugar proxies
         SlimSugar::$slim = $slim;
@@ -23,7 +23,7 @@ class SlimStatic
 
         // Add special-case Slim container instance
         $aliases = array('Container');
-        static::addInstances($aliases, $manager, $slim->container);
+        static::addInstances($aliases, $manager, $slim->getContainer());
 
         // Add services that are resolved out of the Slim container
         static::addServices($manager, $slim);
@@ -50,7 +50,7 @@ class SlimStatic
     * Adds services to the Statical Manager
     *
     * @param \Statical\Manager $manager
-    * @param \Slim\Slim $slim
+    * @param \Slim\App $slim
     */
     static protected function addServices($manager, $slim)
     {
