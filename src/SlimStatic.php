@@ -26,7 +26,7 @@ class SlimStatic
         static::addInstances($aliases, $manager, $slim->getContainer());
 
         // Add services that are resolved out of the Slim container
-        static::addServices($manager, $slim);
+        static::addServices($manager, $slim->getContainer());
 
         return $manager;
     }
@@ -50,7 +50,7 @@ class SlimStatic
     * Adds services to the Statical Manager
     *
     * @param \Statical\Manager $manager
-    * @param \Slim\App $slim
+    * @param \Psr\Container\ContainerInterface $slim
     */
     static protected function addServices($manager, $slim)
     {
@@ -62,7 +62,7 @@ class SlimStatic
             'View'     => 'view',
         );
 
-        $container = array($slim, '__get');
+        $container = array($slim, 'get');
 
         foreach ($services as $alias => $id) {
             $proxy = __NAMESPACE__.'\\'.$alias;
