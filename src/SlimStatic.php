@@ -18,7 +18,7 @@ class SlimStatic
         $manager = new \Statical\Manager();
 
         // Add proxies that use the Slim instance
-        $aliases = array('App', 'Config', 'Route');
+        $aliases = array('App', 'Route');
         static::addInstances($aliases, $manager, $slim);
 
         // Add special-case Slim container instance
